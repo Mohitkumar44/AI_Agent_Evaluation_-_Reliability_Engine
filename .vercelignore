@@ -9,3 +9,8 @@ scratch/
 tests/
 requirements.txt
 README.md
+
+# Dependencies are rebuilt from frontend/package-lock.json during deployment.
+# Do not upload the tracked local installation: its executable bits are not
+# preserved by the deployment archive and Vite/TypeScript then cannot start.
+frontend/node_modules/
