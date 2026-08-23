@@ -2,7 +2,8 @@ import os
 import sys
 import json
 import argparse
-from typing import Dict, Any
+from typing import Optional, List, Dict, Any
+
 
 from backend.orchestrator import BatchOrchestrator
 
