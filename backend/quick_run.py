@@ -18,6 +18,7 @@ class QuickRunner:
         self,
         scenarios_path: str = "scenarios/",
         out_path: str = "metrics/quick_report.json",
+        trace_output_dir: str = "traces/quick_run",
         limit: Optional[int] = None,
         threshold: float = 0.70,
         seed: int = 42,
@@ -25,13 +26,14 @@ class QuickRunner:
     ):
         self.scenarios_path = scenarios_path
         self.out_path = out_path
+        self.trace_output_dir = trace_output_dir
         self.limit = limit
         self.threshold = threshold
         self.seed = seed
         self.agent_version = agent_version
 
     def run(self) -> Dict[str, Any]:
-        temp_traces_dir = "traces/quick_run"
+        temp_traces_dir = self.trace_output_dir
         orchestrator = BatchOrchestrator(
             scenarios_path=self.scenarios_path,
             output_dir=temp_traces_dir,

@@ -6,6 +6,22 @@ CI/CD for AI Agents
 
 AgentGuard is an AI-powered testing and reliability platform designed to automatically evaluate autonomous AI agents before they reach production.
 
+## Deploy on Netlify
+
+This repository is ready to deploy as one Netlify site: the Vite dashboard is
+served from `frontend/dist`, and the FastAPI application runs behind the same
+origin at `/api/*` through a Netlify Function. No `VITE_API_BASE_URL` is needed
+for this deployment.
+
+1. Import the repository into Netlify.
+2. Leave the build settings to `netlify.toml` (build command: `npm --prefix frontend ci && npm --prefix frontend run build`; publish directory: `frontend/dist`).
+3. Deploy. The function's generated pipeline files are intentionally written to
+   the serverless temporary directory, so run history is available only for the
+   lifetime of a warm function instance.
+
+For a separately hosted API, set `VITE_API_BASE_URL` in the frontend build
+environment to that API's public URL.
+
 Instead of relying on a handful of manually written prompts, AgentGuard generates realistic and adversarial scenarios, executes agents safely inside a sandbox, captures execution traces, identifies failure modes, calculates a reliability score, and tracks regressions across agent versions.
 
 🚨 Problem
